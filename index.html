@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Telegram Channels Task</title>
     <link rel="stylesheet" href="src/styles.css" />
@@ -13,16 +13,54 @@
       <button id="addBtn" class="btn">Добавить канал</button>
     </header>
     <main>
-      <div id="channels" class="channels"></div>
+      <table id="channels" class="channels"></table>
     </main>
     <div id="modal" class="modal hidden">
       <div class="modal-content">
         <h2>Добавить канал</h2>
-        <img src="assets/qr.png" class="qr">
+        <img src="assets/qr.png" class="qr" />
         <button id="confirmAdd" class="btn">Подтвердить</button>
         <button id="closeModal" class="btn secondary">Закрыть</button>
       </div>
     </div>
+
+    <!-- Modal for channel actions -->
+    <div id="actionsModal" class="modal hidden">
+      <div class="modal-content actions-menu">
+        <h3>Действия</h3>
+        <button id="editChannel" class="action-btn">Редактировать</button>
+        <button id="deleteChannel" class="action-btn delete">
+          Удалить сессию
+        </button>
+        <button id="closeActions" class="btn secondary">Закрыть</button>
+      </div>
+    </div>
+
+    <!-- Modal for changing channel name -->
+    <div id="editModal" class="modal hidden" >
+      <div class="modal-content">
+        <h2>Редактировать канал</h2>
+        <input
+          type="text"
+          id="channelNameInput"
+          placeholder="Введите новое имя канала"
+        />
+        <button id="saveChannelName" class="btn">Сохранить</button>
+        <button id="closeEditModal" class="btn secondary">Закрыть</button>
+      </div>
+    </div>
+    
+
+    <!-- Modal for delete confirmation -->
+    <div id="confirmModal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Подтверждение</h3>
+        <p>Вы уверены, что хотите удалить эту сессию?</p>
+        <button id="confirmDelete" class="btn">Удалить</button>
+        <button id="cancelDelete" class="btn secondary">Отмена</button>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

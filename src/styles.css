@@ -27,18 +27,66 @@ body {
 }
 
 .channels {
-  padding: 20px;
-  display: grid;
-  gap: 20px;
+  margin: 20px;
+  width: calc(100% - 40px);
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.channel {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.channels thead {
+  background: #0088cc;
+  color: #fff;
+}
+
+.channels th,
+.channels td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.channels th:last-child,
+.channels td:last-child {
+  text-align: right;
+}
+
+.channels tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.channels tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.channels .deleteBtn {
+  background: #dc3545;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.channels .deleteBtn:hover {
+  background: #c82333;
+}
+
+.btn-settings {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  color: #666;
+  margin-right: 10px;
+}
+
+.btn-settings:hover {
+  background: #f0f0f0;
+  border-radius: 4px;
 }
 
 .qr {
@@ -47,14 +95,17 @@ body {
   margin: 20px auto;
 }
 
-/* Mpdal styles */
+/* Modal styles */
 .modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .modal.hidden {
@@ -69,16 +120,47 @@ body {
   max-width: 400px;
 }
 
-
-/* Responsive grid */
-@media (min-width: 768px) {
-  .channels {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Actions menu styles */
+.actions-menu {
+  min-width: 250px;
 }
 
-@media (min-width: 1024px) {
+.action-btn {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 5px 0;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  background: #e0e0e0;
+}
+
+.action-btn.delete {
+  color: #dc3545;
+}
+
+.action-btn.delete:hover {
+  background: #ffe0e0;
+}
+
+
+
+/* Responsive table */
+@media (max-width: 768px) {
   .channels {
-    grid-template-columns: repeat(3, 1fr);
+    font-size: 14px;
+  }
+
+  .channels th:nth-child(2),
+  .channels td:nth-child(2),
+  .channels th:nth-child(3),
+  .channels td:nth-child(3) {
+    display: none;
   }
 }
