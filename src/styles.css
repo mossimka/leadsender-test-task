@@ -13,6 +13,31 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
+.search-container {
+  padding: 20px;
+  background: #fff;
+  margin: 0;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #0088cc;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
 .btn {
   background: #0088cc;
   color: #fff;
@@ -148,8 +173,6 @@ body {
 .action-btn.delete:hover {
   background: #ffe0e0;
 }
-
-
 
 /* Responsive table */
 @media (max-width: 768px) {

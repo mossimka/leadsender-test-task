@@ -10,3 +10,5 @@ export const MODAL_IDS = {
   CONFIRM: "confirmModal",
   EDIT: "editModal",
 };
+
+export const STORAGE_KEY = "telegram_channels";

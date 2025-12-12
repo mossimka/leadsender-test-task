@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Telegram Channels Task</title>
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <header class="header">
       <h1>Управление Telegram каналами</h1>
       <button id="addBtn" class="btn">Добавить канал</button>
     </header>
+    <div class="search-container">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Поиск по названию, воронке, аккаунту или статусу..."
+      />
+    </div>
     <main>
       <table id="channels" class="channels"></table>
     </main>
@@ -37,7 +46,7 @@
     </div>
 
     <!-- Modal for changing channel name -->
-    <div id="editModal" class="modal hidden" >
+    <div id="editModal" class="modal hidden">
       <div class="modal-content">
         <h2>Редактировать канал</h2>
         <input
@@ -49,7 +58,6 @@
         <button id="closeEditModal" class="btn secondary">Закрыть</button>
       </div>
     </div>
-    
 
     <!-- Modal for delete confirmation -->
     <div id="confirmModal" class="modal hidden">
