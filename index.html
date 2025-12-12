@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telegram Channels Task</title>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Управление Telegram каналами</h1>
+      <button id="addBtn" class="btn">Добавить канал</button>
+    </header>
+    <main>
+      <div id="channels" class="channels"></div>
+    </main>
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Добавить канал</h2>
+        <img src="assets/qr.png" class="qr">
+        <button id="confirmAdd" class="btn">Подтвердить</button>
+        <button id="closeModal" class="btn secondary">Закрыть</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
