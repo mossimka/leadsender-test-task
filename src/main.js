@@ -11,9 +11,21 @@ $(document).ready(() => {
   const $confirmModal = $(`#${MODAL_IDS.CONFIRM}`);
   const $editModal = $(`#${MODAL_IDS.EDIT}`);
 
+  // Helper functions for modal animations
+  function openModal($modalElement) {
+    $modalElement.removeClass(CSS_CLASSES.HIDDEN);
+    setTimeout(() => $modalElement.addClass("show"), 10);
+  }
+
+  function closeModal($modalElement) {
+    $modalElement.removeClass("show");
+    setTimeout(() => $modalElement.addClass(CSS_CLASSES.HIDDEN), 300);
+  }
+  
+
   function openActionsModal(channelId) {
     state.selectedChannelId = channelId;
-    $actionsModal.removeClass(CSS_CLASSES.HIDDEN);
+    openModal($actionsModal);
   }
 
   // Initial render of channels from localStorage
@@ -27,38 +39,39 @@ $(document).ready(() => {
 
   // Add channel modal
   $("#addBtn").on("click", () => {
-    $modal.removeClass(CSS_CLASSES.HIDDEN);
+    openModal($modal);
   });
 
   $("#closeModal").on("click", () => {
-    $modal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($modal);
   });
 
   $("#confirmAdd").on("click", () => {
     addChannel();
     renderChannels($channelsContainer, openActionsModal);
-    $modal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($modal);
   });
 
   $("#editChannel").on("click", () => {
-    $actionsModal.addClass(CSS_CLASSES.HIDDEN);
-    $editModal.removeClass(CSS_CLASSES.HIDDEN);
-
-    const channel = state.channels.find(
-      (channel) => channel.id === state.selectedChannelId
-    );
-    if (channel) {
-      $("#channelNameInput").val(channel.name);
-    }
+    closeModal($actionsModal);
+    setTimeout(() => {
+      const channel = state.channels.find(
+        (channel) => channel.id === state.selectedChannelId
+      );
+      if (channel) {
+        $("#channelNameInput").val(channel.name);
+      }
+      openModal($editModal);
+    }, 300);
   });
 
   $("#closeActions").on("click", () => {
-    $actionsModal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($actionsModal);
   });
 
   $("#deleteChannel").on("click", () => {
-    $actionsModal.addClass(CSS_CLASSES.HIDDEN);
-    $confirmModal.removeClass(CSS_CLASSES.HIDDEN);
+    closeModal($actionsModal);
+    setTimeout(() => openModal($confirmModal), 300);
   });
 
   // Edit modal handlers
@@ -74,12 +87,12 @@ $(document).ready(() => {
         renderChannels($channelsContainer, openActionsModal);
       }
     }
-    $editModal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($editModal);
     $("#channelNameInput").val("");
   });
 
   $("#closeEditModal").on("click", () => {
-    $editModal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($editModal);
     $("#channelNameInput").val("");
   });
 
@@ -90,10 +103,10 @@ $(document).ready(() => {
       renderChannels($channelsContainer, openActionsModal);
       state.selectedChannelId = null;
     }
-    $confirmModal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($confirmModal);
   });
 
   $("#cancelDelete").on("click", () => {
-    $confirmModal.addClass(CSS_CLASSES.HIDDEN);
+    closeModal($confirmModal);
   });
 });
